@@ -8,7 +8,7 @@ var plumber = require('gulp-plumber');
 var APP_PATH = 'app';
 var DIST_PATH = 'dist';
 var SCRIPTS_PATH = APP_PATH + '/js/**/*.js';
-var SASS_PATH = APP_PATH + '/sass/main.sass';
+var SASS_PATH = APP_PATH + '/scss/main.scss';
 
 // Styles
 gulp.task('styles', function() {
