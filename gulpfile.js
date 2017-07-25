@@ -49,11 +49,7 @@ gulp.task('scripts', function() {
 // Images
 
 // Watch
-<<<<<<< HEAD
-gulp.task('watch', ['scripts','styles'], function() {
-=======
 gulp.task('watch', ["styles","scripts"], function() {
->>>>>>> 6a477d71bf97b3bb090abdf5c527c4e0b656fa28
 	console.log('Starting watch task!')
 	require('./server.js');
 	livereload.listen();
