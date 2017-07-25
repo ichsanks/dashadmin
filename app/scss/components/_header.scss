@@ -1,0 +1,20 @@
+#main-header {
+	background: red;
+	flex: 0 0 100%;
+	height: $header-height;
+	#logo {
+		display: inline-block;
+		height: $header-height;
+		width: $sidebar-width;
+	}
+	&>.nav>li {
+		height: $header-height;
+		&.notifications>a {
+			width: 40px;
+			text-align: center;
+		}
+		&>a {
+			line-height: $header-height;			
+		}
+	}
+}

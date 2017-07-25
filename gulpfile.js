@@ -8,7 +8,7 @@ var plumber = require('gulp-plumber');
 var APP_PATH = 'app';
 var DIST_PATH = 'dist';
 var SCRIPTS_PATH = APP_PATH + '/js/**/*.js';
-var SASS_PATH = APP_PATH + '/scss/main.scss';
+var SASS_PATH = APP_PATH + '/scss/**/*.scss';
 
 // Styles
 gulp.task('styles', function() {
@@ -48,13 +48,12 @@ gulp.task('scripts', function() {
 
 // Images
 
-// Initialize
-gulp.task('init', ['scripts','styles'], function() {
-	console.log('Initializing...');
-})
-
 // Watch
+<<<<<<< HEAD
 gulp.task('watch', ['scripts','styles'], function() {
+=======
+gulp.task('watch', ["styles","scripts"], function() {
+>>>>>>> 6a477d71bf97b3bb090abdf5c527c4e0b656fa28
 	console.log('Starting watch task!')
 	require('./server.js');
 	livereload.listen();
