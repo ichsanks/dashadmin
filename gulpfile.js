@@ -54,7 +54,7 @@ gulp.task('init', ['scripts','styles'], function() {
 })
 
 // Watch
-gulp.task('watch', function() {
+gulp.task('watch', ['scripts','styles'], function() {
 	console.log('Starting watch task!')
 	require('./server.js');
 	livereload.listen();

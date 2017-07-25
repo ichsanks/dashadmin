@@ -1,4 +1,11 @@
 @import "./node_modules/normalize-scss/sass/normalize/import-now";
+@import "./app/scss/cores/variables.scss";
+@import "./app/scss/cores/mixins.scss";
+@import "./app/scss/cores/grid.scss";
+@import "./app/scss/cores/scaffolding.scss";
+@import "./app/scss/cores/forms.scss";
+@import "./app/scss/cores/buttons.scss";
+@import "./app/scss/cores/tables.scss";
 
 body {
 	background: red;
