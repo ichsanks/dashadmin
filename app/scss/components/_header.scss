@@ -1,20 +1,59 @@
 #main-header {
-	background: red;
-	flex: 0 0 100%;
+	background: $white;
+	width: 100%;
 	height: $header-height;
+	border-bottom: 1px solid $light-grey;
 	#logo {
 		display: inline-block;
 		height: $header-height;
 		width: $sidebar-width;
+		float: left;
 	}
-	&>.nav>li {
-		height: $header-height;
-		&.notifications>a {
-			width: 40px;
+	#main-nav {
+		line-height: $header-height;
+		&>.sidebar-toggle {
+			padding: 0;
+			height: $header-height;
+			width: 50px;
 			text-align: center;
 		}
-		&>a {
-			line-height: $header-height;			
+		& .dropdown-menu {
+			line-height: normal;
 		}
-	}
+		&>.nav>li {
+			height: $header-height;
+			border-left: 1px solid $light-grey;
+			&.elastic-search {
+				border-left: none;
+				position: relative;
+				padding-right: 10px;
+				& input[type="text"] {					
+				}
+				&:hover {
+					input[type="text"] {
+						transition: all 0.4s;						
+					}
+					.btn-submit {
+						opacity: 0.2;
+					}
+				}
+				& .btn-submit {
+					position: absolute;
+					right: 0;
+					top: 0;
+					height: $header-height;
+					width: 50px;
+					padding: 0;			
+				}
+			}
+			&.notifications>a, &.elastic-search>a {
+				width: 50px;
+				padding: 0;
+				text-align: center;
+			}			
+			&>a {
+				padding: 0 20px;
+			}
+		}
+	}	
 }

@@ -1,14 +1,55 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var livereload = require('gulp-livereload');
-var autoprefixer = require('gulp-autoprefixer');
-var sourcemaps = require('gulp-sourcemaps');
-var plumber = require('gulp-plumber');
+var gulp = require('gulp'),
+	pug = require('gulp-pug'),
+	sass = require('gulp-sass'),
+	livereload = require('gulp-livereload'),
+	autoprefixer = require('gulp-autoprefixer'),
+	sourcemaps = require('gulp-sourcemaps'),
+	plumber = require('gulp-plumber');
 
-var APP_PATH = 'app';
-var DIST_PATH = 'dist';
-var SCRIPTS_PATH = APP_PATH + '/js/**/*.js';
-var SASS_PATH = APP_PATH + '/scss/**/*.scss';
+var APP_PATH = 'app',
+	DIST_PATH = 'dist',
+	VIEWS_PATH = APP_PATH + '/pug/pages/**/*.pug',
+	SCRIPTS_PATH = APP_PATH + '/js/**/*.js',
+	SASS_PATH = APP_PATH + '/scss/**/*.scss';
+
+
+// Views Index
+gulp.task('index', function() {
+	console.log('Starting index views task!');
+
+	return gulp.src(APP_PATH + '/index.pug')
+		.pipe(plumber(function(err) {
+			console.log('Index views task error!');
+			console.log(err);
+			this.emit(err);
+		}))
+		.pipe(sourcemaps.init())
+		.pipe(pug({
+			pretty: true
+		}))			
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest(DIST_PATH))
+		.pipe(livereload());
+});
+
+// Views
+gulp.task('views', function() {
+	console.log('Starting views task!');
+
+	return gulp.src(VIEWS_PATH)
+		.pipe(plumber(function(err) {
+			console.log('Views task error!');
+			console.log(err);
+			this.emit(err);
+		}))
+		.pipe(sourcemaps.init())
+		.pipe(pug({
+			pretty: true
+		}))			
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest(DIST_PATH + '/pages'))
+		.pipe(livereload());
+});
 
 // Styles
 gulp.task('styles', function() {
@@ -48,11 +89,26 @@ gulp.task('scripts', function() {
 
 // Images
 
+// CSS Plugins
+gulp.task('cssplugins', function() {
+	return gulp.src(['node_modules/font-awesome/css/font-awesome.min.css'])
+		.pipe(gulp.dest(DIST_PATH + '/css'))		
+});
+
+// Fonts Plugins
+gulp.task('fontplugins', function() {
+	return gulp.src(['node_modules/font-awesome/fonts/*'])
+		.pipe(gulp.dest(DIST_PATH + '/fonts'))		
+});
+
 // Watch
-gulp.task('watch', ["styles","scripts"], function() {
+gulp.task('watch', ["index","views","styles","scripts","cssplugins","fontplugins"], function() {
 	console.log('Starting watch task!')
 	require('./server.js');
 	livereload.listen();
+	gulp.watch(APP_PATH + '/index.pug', ['index']);
+	gulp.watch(VIEWS_PATH, ['views']);
+	gulp.watch(APP_PATH + '/pug/templates/**/*.pug', ['index','views']);
 	gulp.watch(SCRIPTS_PATH, ['scripts']);
 	gulp.watch(SASS_PATH, ['styles']);
-})
+});

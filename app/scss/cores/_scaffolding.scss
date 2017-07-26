@@ -1,3 +1,17 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: $open-sans;
+	font-size: $base-font-size;
+	color: #777;
+}
+
+h1,h2,h3,h4 {
+	display: inline;
+}
+
 a {
 	text-decoration: none;
 	.nav & {
@@ -33,14 +47,26 @@ ul.hz-list {
 	float: right;
 }
 
+.divider {
+	height: 1px;
+	overflow: hidden;
+	margin: 8px 0;
+	background-color: $light-grey;
+}
+
 .dropdown {
 	position: relative;
 	.dropdown-menu {
 		display: none;
-		padding: 5px 10px;
-		position: absolute;		
+		padding: 5px 0;
+		position: absolute;
+		min-width: 150px;
+		background-color: white;
 		&>li {
-			white-space: nowrap
+			white-space: nowrap;
+			&>a {
+				padding: 5px 20px;
+			}
 		}
 		.right & {
 			right: 0;
@@ -50,11 +76,18 @@ ul.hz-list {
 
 .treeview {
 	.treeview-menu {
-		display: none;
+		max-height: 0;
+		overflow: hidden;
+		transition: all 1s;
+		&>li>a {
+			padding-left: 30px;
+		}
+	}
+	&:hover .treeview-menu {
+		max-height: 100vh;
 	}
 }
 
 #wrapper {
-	display: flex;
-	flex-flow: row wrap;
+	position: relative;
 }

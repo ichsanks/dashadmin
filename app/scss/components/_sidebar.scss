@@ -1,13 +1,27 @@
 #main-sidebar {
-	height: calc(100vh - #{$header-height});
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	margin-top: $header-height;
 	overflow-y: auto;
 	width: $sidebar-width;
-	background: $blue-base;	
+	background: $dark-blue;	
 	.nav>li {
-		border-bottom: 1px solid #000;
+		border-bottom: 1px solid #2b3642;
+		&>a {
+			border-bottom: 0px solid $dark-grey;
+			&>i {
+				margin-right: 15px;
+			}
+		}
 	}
 	.nav a {
 		color: white;
-		padding: 10px 15px;	
+		padding: 12px 15px;	
+	}
+	.treeview-menu>li>a {
+		padding: 8px 30px;
+		background-color: lighten($dark-blue, 3%);
 	}
 }

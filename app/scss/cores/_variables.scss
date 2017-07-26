@@ -1,10 +1,18 @@
 // Colors
 // ============================================
-$gray-base: #000;
-$blue-base: blue;
+$black: #000000;
+$white: #ffffff;
+$light-grey: #f4f4f4;
+$dark-grey: #585858;
+$dark-blue: #242d37;
 
 // Components
 // ============================================ 
-$header-height: 60px;
+$header-height: 50px;
+$sidebar-width: 220px;
 
-$sidebar-width: 200px;
+// Fonts
+// ============================================
+$open-sans: 'Open Sans', sans-serif;
+$roboto: 'Roboto Slab', serif;
+$base-font-size: 14px;
