@@ -8,6 +8,10 @@
 		height: $header-height;
 		width: $sidebar-width;
 		float: left;
+		margin-left: -220px;
+		@include media('>desktop') {
+			margin-left: 0;
+		}
 	}
 	#main-nav {
 		line-height: $header-height;
@@ -27,7 +31,8 @@
 				border-left: none;
 				position: relative;
 				padding-right: 10px;
-				& input[type="text"] {					
+				& input[type="text"] {
+					display: none;
 				}
 				&:hover {
 					input[type="text"] {
@@ -50,7 +55,10 @@
 				width: 50px;
 				padding: 0;
 				text-align: center;
-			}			
+			}
+			&.user-menu>a>span {
+				display: none;
+			}
 			&>a {
 				padding: 0 20px;
 			}

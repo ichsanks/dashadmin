@@ -1,9 +1,12 @@
 .btn {
 	outline: 0;
 	border: 0;
-	padding: 0 20px;
-	height: 30px;
-	line-height: 30px;
+	padding: 0 1.25rem;
+	height: 2.125rem;	
 	cursor: pointer;
 	background-color: transparent;
+}
+.btn-dark-blue {
+	background-color: $dark-blue;
+	color: rgba(255,255,255,0.7);	
 }

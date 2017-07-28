@@ -47,6 +47,16 @@ ul.hz-list {
 	float: right;
 }
 
+.text-right {
+	text-align: right;
+}
+.text-center {
+	text-align: center;
+}
+.text-justify {
+	text-align: justify;
+}
+
 .divider {
 	height: 1px;
 	overflow: hidden;
@@ -90,4 +100,9 @@ ul.hz-list {
 
 #wrapper {
 	position: relative;
+}
+
+.login-box {
+	width: 360px;
+	margin: 0 auto;
 }

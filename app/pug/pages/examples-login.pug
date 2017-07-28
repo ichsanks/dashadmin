@@ -1,0 +1,21 @@
+doctype html
+html
+	head
+		title Dashadmin
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-Compatible",content="IE=edge")
+		meta(content="width=device-width",initial-scale=1,maximum-scale=1,user-scalable=no,name="viewport")
+		include ../templates/head
+	body
+		#wrapper
+			.cards.login-box
+				.cards-header
+					.logo
+				.cards-body
+					form
+						.form-group
+							input(type="text",placeholder="Username").form
+						.form-group
+							input(type="password",placeholder="Password").form
+						.form-group.text-right
+							input(type="submit",value="Sign In").btn.btn-dark-blue

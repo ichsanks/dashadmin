@@ -1,6 +1,11 @@
-#page-content {
+#content-wrapper {
 	background-color: #f7f7f7;
 	height: calc(100vh - #{$header-height});
-	margin-left: $sidebar-width;
-	padding: 15px;
+	margin-left: 0;
+	&>.content-header {
+		padding: 15px;
+	}
+	@include media('>desktop') {
+		margin-left: $sidebar-width;
+	}
 }

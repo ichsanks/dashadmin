@@ -1,14 +1,14 @@
 var gulp = require('gulp'),
 	pug = require('gulp-pug'),
 	sass = require('gulp-sass'),
-	livereload = require('gulp-livereload'),
+	browsersync = require('browser-sync').create(),
 	autoprefixer = require('gulp-autoprefixer'),
 	sourcemaps = require('gulp-sourcemaps'),
 	plumber = require('gulp-plumber');
 
 var APP_PATH = 'app',
 	DIST_PATH = 'dist',
-	VIEWS_PATH = APP_PATH + '/pug/pages/**/*.pug',
+	VIEWS_PATH = APP_PATH + '/pug/pages/*.pug',
 	SCRIPTS_PATH = APP_PATH + '/js/**/*.js',
 	SASS_PATH = APP_PATH + '/scss/**/*.scss';
 
@@ -17,7 +17,7 @@ var APP_PATH = 'app',
 gulp.task('index', function() {
 	console.log('Starting index views task!');
 
-	return gulp.src(APP_PATH + '/index.pug')
+	return gulp.src(APP_PATH + '/pug/index.pug')
 		.pipe(plumber(function(err) {
 			console.log('Index views task error!');
 			console.log(err);
@@ -29,7 +29,7 @@ gulp.task('index', function() {
 		}))			
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(DIST_PATH))
-		.pipe(livereload());
+		.pipe(browsersync.stream());
 });
 
 // Views
@@ -48,7 +48,7 @@ gulp.task('views', function() {
 		}))			
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(DIST_PATH + '/pages'))
-		.pipe(livereload());
+		.pipe(browsersync.stream());
 });
 
 // Styles
@@ -68,7 +68,7 @@ gulp.task('styles', function() {
 		}))
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(DIST_PATH + '/css'))
-		.pipe(livereload());
+		.pipe(browsersync.stream());
 });
 
 // Scripts
@@ -84,7 +84,7 @@ gulp.task('scripts', function() {
 		.pipe(sourcemaps.init())
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(DIST_PATH + '/js'))
-		.pipe(livereload());
+		.pipe(browsersync.stream());
 });
 
 // Images
@@ -104,11 +104,10 @@ gulp.task('fontplugins', function() {
 // Watch
 gulp.task('watch', ["index","views","styles","scripts","cssplugins","fontplugins"], function() {
 	console.log('Starting watch task!')
-	require('./server.js');
-	livereload.listen();
-	gulp.watch(APP_PATH + '/index.pug', ['index']);
-	gulp.watch(VIEWS_PATH, ['views']);
-	gulp.watch(APP_PATH + '/pug/templates/**/*.pug', ['index','views']);
+	browsersync.init({
+        server: "./dist"
+    });
+	gulp.watch(APP_PATH + '/pug/**/*.pug', ['index','views']);
 	gulp.watch(SCRIPTS_PATH, ['scripts']);
 	gulp.watch(SASS_PATH, ['styles']);
 });

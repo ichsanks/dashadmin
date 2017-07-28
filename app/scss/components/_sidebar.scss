@@ -2,18 +2,21 @@
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	left: 0;
+	left: -$sidebar-width;
 	margin-top: $header-height;
 	overflow-y: auto;
 	width: $sidebar-width;
-	background: $dark-blue;	
+	background: $dark-blue;
+	&.pushed-in {
+		left: 0;
+	}
 	.nav>li {
 		border-bottom: 1px solid #2b3642;
 		&>a {
 			border-bottom: 0px solid $dark-grey;
 			&>i {
 				margin-right: 15px;
-			}
+			}			
 		}
 	}
 	.nav a {
@@ -23,5 +26,8 @@
 	.treeview-menu>li>a {
 		padding: 8px 30px;
 		background-color: lighten($dark-blue, 3%);
+	}	
+	@include media('>desktop') {
+		left: 0;
 	}
 }
